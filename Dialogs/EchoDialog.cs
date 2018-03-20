@@ -18,14 +18,14 @@ namespace Microsoft.Bot.Sample.SimpleEchoBot
 
             return Task.CompletedTask;
         }
-        
+
         private async Task MessageReceivedAsync(IDialogContext context, IAwaitable<object> result)
         {
             var activity = await result as Activity;
 
             // User message
             string userMessage = activity.Text;
-           AdaptiveCards.AdaptiveCard card =  MessageHandler.GetCard(userMessage);
+            AdaptiveCards.AdaptiveCard card = MessageHandler.GetCard(userMessage);
             try
             {
                 using (HttpClient client = new HttpClient())
@@ -39,7 +39,7 @@ namespace Microsoft.Bot.Sample.SimpleEchoBot
 
                         //Post the API response to bot again
                         // await context.PostAsync($"Response is {apiResponse}");
-                        await context.PostAsync(GetMessage(context,card,"Weather card"));
+                        await context.PostAsync(GetMessage(context, card, "Weather card"));
 
                     }
                 }
@@ -50,7 +50,7 @@ namespace Microsoft.Bot.Sample.SimpleEchoBot
             }
             context.Wait(MessageReceivedAsync);
         }
-        
+
         /*
        private async Task MessageReceivedAsync(IDialogContext context, IAwaitable<object>  actionResult)
         {
@@ -84,7 +84,7 @@ namespace Microsoft.Bot.Sample.SimpleEchoBot
             return message;
         }
     }
-   
+
     /*
     [Serializable]
     public class EchoDialog : IDialog<object>

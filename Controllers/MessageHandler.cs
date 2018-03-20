@@ -11,7 +11,7 @@ namespace SimpleEchoBot.Controllers
     using APIXULib;
     using System.Configuration;
 
-   
+
     public class MessageHandler
     {
         /*
@@ -51,7 +51,7 @@ namespace SimpleEchoBot.Controllers
             var currentColumn = new Column();
             current.Columns.Add(currentColumn);
             currentColumn.Size = "35";
-            
+
             var currentImage = new Image();
             currentColumn.Items.Add(currentImage);
             currentImage.Url = GetIconUrl(model.current.condition.icon);
@@ -61,7 +61,7 @@ namespace SimpleEchoBot.Controllers
             currentColumn2.Size = "65";
 
             string date = DateTime.Parse(model.current.last_updated).DayOfWeek.ToString();
-            
+
             AddTextBlock(currentColumn2, $"{model.location.name} , {model.location.country}", TextSize.Large, false);
             AddTextBlock(currentColumn2, $"{model.current.temp_c.ToString().Split('.')[0]}° C", TextSize.Large);
             AddTextBlock(currentColumn2, $"{model.current.condition.text}", TextSize.Medium);
